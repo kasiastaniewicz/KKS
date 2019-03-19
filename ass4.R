@@ -1,3 +1,4 @@
+#below i put the sources
 #https://www.kaggle.com/tianxinl0106/classification-with-nnet
 #https://beckmw.wordpress.com/tag/nnet/
 
@@ -30,7 +31,7 @@ db_udp <- read.csv("udp.csv")
 
 ##Add additional column containing all kinds of an attack
 db_tcp["Type"] <- "tcp"
-db_combo["Type"] <- "combo.csv"
+db_combo["Type"] <- "combo"
 db_junk["Type"] <- "junk"
 db_scan["Type"] <- "scan"
 db_udp["Type"] <- "udp"
@@ -46,10 +47,10 @@ trainingData <- alldoorbell[TrainingDataIndex,]
 #trainingData
 #testData <- alldoorbell[-TrainingDataIndex,]
 
-#change later back repeats to 10
+#change later back repeats to 10, I put 1 to speed up
 TrainingParameters <- trainControl(method = "repeatedcv", number = 10, repeats=1)
 
-TrainingDataIndex2 <- createDataPartition(alldoorbell$Type, p=0.1, list = FALSE)
+TrainingDataIndex2 <- createDataPartition(alldoorbell$Type, p=0.2, list = FALSE)
 testData <- alldoorbell[TrainingDataIndex2,]
 
 
